@@ -5,25 +5,23 @@
 # --
 #
 # If no parameter is entered, usage info will display.
-[ $# -eq 0 ] && { echo "Usage: nag ls, add, rm, 1, clr"; exit 1; }
+[ $# -eq 0 ] && { echo "Usage: nag ls, rm, add, clr, 1"; exit 1; }
 
 nag=$1
+rav=$2
 
 if [ $nag = "ls" ]; then
-	nagls
-elif [ $nag = "rm"; then
-	nagrm $2
-elif [ $nag = "add"; then
-	nagadd $2
-elif [ $nag = "1"; then
-	nag1
-elif [ $nag = "clr"; then
-	echo "Clear nag list?"
-	echo "y/n"
-	read yn
-	if test $yn y; then
-	nagclr
+	nl ~/.nag
+elif [ $nag = "rm" ]; then
+	sed -i '$ravd' ~/.nag
+elif [ $nag = "add" ]; then
+	echo $rav >> ~/.nag
+elif [ $nag = "1" ]; then
+	head -1 ~/.nag
+elif [ $nag = "clr" ]; then
+	echo "This will clear your nag file."
+	read -p "Press ctrl+c to cancel or any other key to continue."
+	true > ~/.nag
 else
-	echo "$nag is not a command."
-	echo "Try just typing nag for usage info."
+	echo "$nag is not a command. Try just typing nag for usage info."
 fi
