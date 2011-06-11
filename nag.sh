@@ -18,8 +18,10 @@ if [ $nag = "ls" ]; then
 	nl ~/.nag
 elif [ $nag = "rm" ]; then
 	nagrm $rav
+	echo "nag $rav removed."
 elif [ $nag = "add" ]; then
 	echo $rav >> ~/.nag
+	echo "$rav added."
 elif [ $nag = "clr" ]; then
 	echo "This will clear your nag file."
 	read -p "Press ctrl+c to cancel or any other key to continue."
