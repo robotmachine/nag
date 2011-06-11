@@ -5,24 +5,25 @@
 # --
 #
 # If no parameter is entered, usage info will display.
-[ $# -eq 0 ] && { echo "Usage: nag -ls, -rm, -add, -clr, -1"; exit 1; }
+[ $# -eq 0 ] && { echo "Usage: nag ls, add, rm, 1, clr"; exit 1; }
 
 nag=$1
 
-if [ $nag = "-ls" ]; then
+if [ $nag = "ls" ]; then
 	nagls
-elif [ $nag = "-rm"; then
+elif [ $nag = "rm"; then
 	nagrm $2
-elif [ $nag = "-add"; then
+elif [ $nag = "add"; then
 	nagadd $2
-elif [ $nag = "-1"; then
+elif [ $nag = "1"; then
 	nag1
-elif [ $nag = "-clr"; then
+elif [ $nag = "clr"; then
 	echo "Clear nag list?"
 	echo "y/n"
 	read yn
 	if test $yn y; then
 	nagclr
 else
-	echo "$nag is not a command. Try just typing nag for usage info."
+	echo "$nag is not a command."
+	echo "Try just typing nag for usage info."
 fi
