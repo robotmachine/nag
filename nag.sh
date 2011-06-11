@@ -20,8 +20,10 @@ elif [ $nag = "rm" ]; then
 	nagrm $rav
 	echo "nag $rav removed."
 elif [ $nag = "add" ]; then
-	echo $rav >> ~/.nag
-	echo "$rav added."
+	echo -n "Add a nag: "
+	read new
+	echo $new >> ~/.nag
+	echo "Added: $new"
 elif [ $nag = "clr" ]; then
 	echo "This will clear your nag file."
 	read -p "Press ctrl+c to cancel or any other key to continue."
