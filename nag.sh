@@ -10,10 +10,14 @@
 nag=$1
 rav=$2
 
+nagrm() {
+	sed -i ${1:-1}d ~/.nag
+	}
+
 if [ $nag = "ls" ]; then
 	nl ~/.nag
 elif [ $nag = "rm" ]; then
-	sed -i '$ravd' ~/.nag
+	nagrm $rav
 elif [ $nag = "add" ]; then
 	echo $rav >> ~/.nag
 elif [ $nag = "1" ]; then
