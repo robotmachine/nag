@@ -4,9 +4,14 @@
 # Using the basic structure outlined here: http://onethingwell.org/post/4441662022/nag-ii-unix-boogaloo
 # --
 #
+# Creates a nag file if one isn't found.
+if [ ! -f ~/.nag ]; then
+	touch ~/.nag
+	echo "No nag file found. Creating ~/.nag"
+fi
 # If no parameter is entered, the latest nag will show.
  [ $# -eq 0 ] && { head -1 ~/.nag; exit 1; }
-
+#
 nag=$1
 rav=$2
 
